@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Navigate, Outlet, useLocation } from 'react-router-dom'
+import { Navigate, Outlet, useLocation, useOutletContext } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext.jsx'
 
 export function RouteLoadingSpinner() {
@@ -14,6 +14,7 @@ export function RouteLoadingSpinner() {
 export function ProtectedRoute({ children }) {
   const { user, loading } = useContext(AuthContext) || {}
   const location = useLocation()
+  const outletContext = useOutletContext()
 
   if (loading) {
     return <RouteLoadingSpinner />
@@ -23,12 +24,13 @@ export function ProtectedRoute({ children }) {
     return <Navigate to="/login" state={{ from: location }} replace />
   }
 
-  return children ? children : <Outlet />
+  return children ? children : <Outlet context={outletContext} />
 }
 
 export function ArtistRoute({ children }) {
   const { user, loading } = useContext(AuthContext) || {}
   const location = useLocation()
+  const outletContext = useOutletContext()
 
   if (loading) {
     return <RouteLoadingSpinner />
@@ -42,12 +44,13 @@ export function ArtistRoute({ children }) {
     return <Navigate to="/" replace />
   }
 
-  return children ? children : <Outlet />
+  return children ? children : <Outlet context={outletContext} />
 }
 
 export function GuestRoute({ children }) {
   const { user, loading } = useContext(AuthContext) || {}
   const location = useLocation()
+  const outletContext = useOutletContext()
 
   if (loading) {
     return <RouteLoadingSpinner />
@@ -65,7 +68,7 @@ export function GuestRoute({ children }) {
     return <Navigate to={destination} replace />
   }
 
-  return children ? children : <Outlet />
+  return children ? children : <Outlet context={outletContext} />
 }
 
 export default {
