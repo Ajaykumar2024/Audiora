@@ -9,8 +9,8 @@
 > [!NOTE]
 > Replace the placeholders below with your deployed URLs and application screenshots.
 
-- **Live App (Frontend):** `[Add Live Frontend URL]`
-- **API Base URL (Backend):** `[Add Live Backend URL]`
+- **Live App (Frontend):** https://audiora-puce.vercel.app
+- **API Base URL (Backend):** https://audiora-g3k2.onrender.com
 
 | Listener Home & Discovery | Artist Studio Dashboard |
 | :---: | :---: |
