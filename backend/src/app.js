@@ -9,7 +9,9 @@ const albumRoutes = require('./routes/album.routes.js')
 const searchRoutes = require('./routes/search.routes.js')
 
 const app = express()
-const frontendOrigin = process.env.FRONTEND_URL || 'http://localhost:5173'
+const frontendOrigin = process.env.FRONTEND_URL
+    ? process.env.FRONTEND_URL.split(',').map(url => url.trim())
+    : ['http://localhost:5173'];
 
 app.use(cors({
     origin: frontendOrigin,
