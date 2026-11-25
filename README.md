@@ -9,7 +9,7 @@
 > [!NOTE]
 > Replace the placeholders below with your deployed URLs and application screenshots.
 
-- **Live App (Frontend):** https://audiora-puce.vercel.app
+- **Live App (Frontend):** https://audiora.dpdns.org/
 - **API Base URL (Backend):** https://audiora-g3k2.onrender.com
 
 | Listener Home & Discovery | Artist Studio Dashboard |
