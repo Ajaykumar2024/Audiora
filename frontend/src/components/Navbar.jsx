@@ -108,7 +108,7 @@ export default function Navbar({ onToggleSidebar }) {
   }
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 shrink-0 items-center justify-between px-4 sm:px-6 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800/40 md:border-b-0 md:bg-transparent">
+    <header className="sticky top-0 z-30 flex h-16 shrink-0 items-center justify-between px-3 sm:px-6 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800/40 md:border-b-0 md:bg-transparent">
       {/* Mobile Expanded Search Bar (toggled when tapping mobile search icon on non-studio routes) */}
       {!isStudio && isMobileSearchOpen ? (
         <div className="flex md:hidden w-full items-center gap-2">
@@ -149,22 +149,26 @@ export default function Navbar({ onToggleSidebar }) {
 
       {/* Standard Navbar Layout: hidden on mobile when mobile search is open, always visible on desktop */}
       <div
-        className={`w-full items-center justify-between ${!isStudio && isMobileSearchOpen ? 'hidden md:flex' : 'flex'
+        className={`w-full items-center justify-between gap-2 ${!isStudio && isMobileSearchOpen ? 'hidden md:flex' : 'flex'
           }`}
       >
         {/* Left section: Hamburger button & mobile logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
           <button
             type="button"
             onClick={onToggleSidebar}
             aria-label="Toggle navigation menu"
-            className="flex items-center justify-center p-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800 md:hidden transition-colors"
+            className="flex items-center justify-center p-1.5 sm:p-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800 md:hidden transition-colors shrink-0"
           >
             <Menu size={22} />
           </button>
 
-          <Link to="/" className="flex items-center gap-2.5 md:hidden group">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900/90 border border-emerald-500/30 group-hover:border-emerald-400 shadow-sm overflow-hidden shrink-0 transition-all duration-200">
+          <Link
+            to="/"
+            aria-label="Audiora Home"
+            className="flex items-center gap-2 sm:gap-2.5 md:hidden group min-w-0"
+          >
+            <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-slate-900/90 border border-emerald-500/30 group-hover:border-emerald-400 shadow-sm overflow-hidden shrink-0 transition-all duration-200">
               {!logoError ? (
                 <img
                   src="/logo.png"
@@ -181,8 +185,8 @@ export default function Navbar({ onToggleSidebar }) {
                 </span>
               )}
             </div>
-            <span className="text-xl font-bold tracking-tight text-white group-hover:text-emerald-400 transition-colors">
-              Audiora<span className="text-emerald-400">.</span>
+            <span className="hidden min-[360px]:inline text-base sm:text-xl font-bold tracking-tight text-white group-hover:text-emerald-400 transition-colors truncate">
+              Audiora
             </span>
           </Link>
         </div>
@@ -233,13 +237,13 @@ export default function Navbar({ onToggleSidebar }) {
         )}
 
         {/* Right section: Mobile Search Trigger + Profile dropdown / Auth buttons */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           {!isStudio && (
             <button
               type="button"
               onClick={() => setIsMobileSearchOpen(true)}
               aria-label="Search"
-              className="flex md:hidden items-center justify-center p-2 rounded-full text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors cursor-pointer"
+              className="flex md:hidden items-center justify-center p-1.5 sm:p-2 rounded-full text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors cursor-pointer shrink-0"
             >
               <Search size={20} />
             </button>
@@ -308,16 +312,16 @@ export default function Navbar({ onToggleSidebar }) {
               )}
             </div>
           ) : (
-            <div className="flex items-center gap-2 sm:gap-3">
+            <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
               <Link
                 to="/register"
-                className="text-xs sm:text-sm font-bold text-zinc-300 hover:text-white px-2 py-1"
+                className="inline-flex items-center justify-center whitespace-nowrap shrink-0 rounded-full px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-bold text-zinc-300 hover:text-white hover:bg-zinc-800/70 transition-colors"
               >
                 Sign up
               </Link>
               <Link
                 to="/login"
-                className="rounded-full bg-white px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-bold text-zinc-950 transition hover:scale-105"
+                className="inline-flex items-center justify-center whitespace-nowrap shrink-0 rounded-full bg-white px-3.5 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-bold text-zinc-950 shadow-sm transition hover:bg-zinc-100 hover:scale-105 active:scale-95"
               >
                 Log in
               </Link>
